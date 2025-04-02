@@ -1,0 +1,1328 @@
+class VancouverMerged_Condensed_NO_ID_DISCRETIZED_03062024
+{
+    inputs = ();
+    outputs = ();
+    node_size = (80 40);
+    HR_Has_Constraints = "yes";
+    HR_DBN_Num_Slices = "5";
+    HR_Desc = "";
+    HR_OOBN_CheckConsistency = "1";
+    HR_OOBN_FitExpand = "1";
+    HR_Zoom_ZoomFactor = "100";
+    HR_Groups_GroupColors = "";
+    HR_Groups_GroupNames = "";
+    HR_Groups_UserGroupsNo = "0";
+    HR_Utility_Link = "63";
+    HR_Probabilistic_Link = "63";
+    HR_Functional_Link = "63";
+    HR_Binding_Link = "63";
+    HR_Information_Arc = "63";
+    HR_Color_Interface = "21";
+    HR_Color_Instance = "0";
+    HR_Color_DiscreteFunction = "5";
+    HR_Color_Function = "4";
+    HR_Color_Utility = "36";
+    HR_Color_Decision = "17";
+    HR_Color_ContinuousChance = "48";
+    HR_Color_DiscreteChance = "16";
+    HR_Monitor_InitSD = "2";
+    HR_Monitor_Utility_Arrange = "0";
+    HR_Monitor_Mean_Variance = "1";
+    HR_Monitor_Chance_Utility = "1";
+    HR_Monitor_InitStates = "5";
+    HR_Monitor_OpenGraph = "0";
+    HR_Monitor_GraphPrecision = "100";
+    HR_Monitor_AutoUpdGraph = "0";
+    HR_Compile_MaxMinimalSeparators = "100000";
+    HR_Compile_ApproxEpsilon = "1.0E-5";
+    HR_Compile_Approximate = "0";
+    HR_Compile_SaveToMemory = "0";
+    HR_Compile_Compress = "0";
+    HR_Compile_TriangMethod = "0";
+    HR_Propagate_AutoNormal = "1";
+    HR_Propagate_AutoSum = "1";
+    HR_Propagate_Auto = "1";
+    HR_Font_Italic = "0";
+    HR_Font_Weight = "400";
+    HR_Font_Size = "-12";
+    HR_Font_Name = "com.apple.laf.AquaFonts$DerivedUIResourceFont[family=Lucida Grande,name=Lucida Grande,style=plain,size=13]";
+    HR_Grid_GridShow = "0";
+    HR_Grid_GridSnap = "0";
+    HR_Grid_Y = "40";
+    HR_Grid_X = "40";
+
+    node meansalinty
+    {
+	position = (175 36);
+	states = ("16 - 21" "0 - 11" "16-Nov" "21 - 35");
+	HR_LinkGroup = "[geomean200:0][meantemp24:0][maxuv24:0][rain48x:0][waveht24:0][prevgeomean10:0]";
+	HR_LinkMode = "[geomean200:0][meantemp24:0][maxuv24:0][rain48x:0][waveht24:0][prevgeomean10:0]";
+    }
+
+    node maxuv24
+    {
+	position = (311 73);
+	states = ("" "" "" "");
+	subtype = interval;
+	state_values = (0.08 5.98 7.1 7.92 12);
+	HR_LinkGroup = "[meansalinty:0][geomean200:0][waveht24:0][meantemp24:0][rain48x:0][prevgeomean10:0]";
+	HR_LinkMode = "[meansalinty:0][geomean200:0][waveht24:0][meantemp24:0][rain48x:0][prevgeomean10:0]";
+    }
+
+    node rain48x
+    {
+	position = (150 119);
+	states = ("" "" "");
+	subtype = interval;
+	state_values = (0 2.5 7.6 76.5);
+	HR_LinkGroup = "[meansalinty:0][geomean200:0][waveht24:0][meantemp24:0][maxuv24:0][prevgeomean10:0]";
+	HR_LinkMode = "[meansalinty:0][geomean200:0][waveht24:0][meantemp24:0][maxuv24:0][prevgeomean10:0]";
+    }
+
+    node geomean200
+    {
+	position = (374 239);
+	states = ("" "");
+	subtype = number;
+	state_values = (0 1);
+	HR_Constraint_prevgeomean10 = "NoArrow";
+	HR_Constraint_waveht24 = "NoArrow";
+	HR_Constraint_meantemp24 = "NoArrow";
+	HR_Constraint_rain48x = "NoArrow";
+	HR_Constraint_meansalinty = "NoArrow";
+	HR_Constraint_maxuv24 = "NoArrow";
+	HR_LinkGroup = "[maxuv24:0][meansalinty:0][rain48x:0][meantemp24:0][waveht24:0][prevgeomean10:0]";
+	HR_LinkMode = "[maxuv24:0][meansalinty:0][rain48x:0][meantemp24:0][waveht24:0][prevgeomean10:0]";
+    }
+
+    node waveht24
+    {
+	position = (50 190);
+	states = ("" "" "");
+	subtype = interval;
+	state_values = (0.015 0.28 1.28 3);
+	HR_Constraint_meantemp24 = "NoArrow";
+	HR_Constraint_maxuv24 = "NoArrow";
+	HR_LinkGroup = "[maxuv24:0][meantemp24:0][prevgeomean10:0]";
+	HR_LinkMode = "[maxuv24:0][meantemp24:0][prevgeomean10:0]";
+    }
+
+    node meantemp24
+    {
+	position = (210 210);
+	states = ("" "" "");
+	subtype = interval;
+	state_values = (5.8 15.3 18.7 26);
+	HR_Constraint_maxuv24 = "NoArrow";
+	HR_LinkGroup = "[maxuv24:0][waveht24:0][meansalinty:0][prevgeomean10:0]";
+	HR_LinkMode = "[maxuv24:0][waveht24:0][meansalinty:0][prevgeomean10:0]";
+    }
+
+    node prevgeomean10
+    {
+	position = (90 270);
+	states = ("" "" "" "" "");
+	subtype = interval;
+	state_values = (0 50 100 200 1000 24196);
+	HR_Constraint_maxuv24 = "NoArrow";
+	HR_LinkGroup = "[maxuv24:0][meansalinty:0][geomean200:0][meantemp24:0]";
+	HR_LinkMode = "[maxuv24:0][meansalinty:0][geomean200:0][meantemp24:0]";
+    }
+
+    potential (meansalinty | prevgeomean10 rain48x maxuv24)
+    {
+	data = (((( 0.274872 0.188875 0.234247 0.302007 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.279734 0.27335 0.277116 0.1698 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.2619 0.264662 0.332408 0.14103 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.252886 0.275828 0.39079 0.0804964 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 (( 0.257822 0.27916 0.231321 0.231697 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		  ( 0.148266 0.248579 0.552119 0.0510363 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		  ( 0.00409539 0.987714 0.00409539 0.00409539 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		  ( 0.00138065 0.00163089 0.995608 0.00138065 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 (( 0.300318 0.168649 0.225695 0.305338 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.43675 0.170267 0.340168 0.0528146 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.00189979 0.53835 0.45785 0.00189979 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.209717 0.362306 0.21826 0.209717 )))	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+		((( 0.236674 0.273681 0.197485 0.29216 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.242485 0.3202 0.316342 0.120973 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.215394 0.430722 0.230774 0.12311 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.0668701 0.333241 0.399834 0.200055 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 (( 0.157811 0.373862 0.186497 0.281831 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		  ( 0.511241 0.00107377 0.486623 0.00106287 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		  ( 0.00409832 0.0041077 0.987696 0.00409832 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		  ( 0.25 0.25 0.25 0.25 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 (( 0.204481 0.342682 0.231475 0.221362 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.000959504 0.514604 0.483477 0.000959504 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.00409817 0.00414572 0.987658 0.00409817 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.25 0.25 0.25 0.25 )))	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+		((( 0.223312 0.298431 0.225601 0.252656 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.333568 0.381293 0.152471 0.132669 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.185205 0.388846 0.277769 0.14818 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.22203 0.418753 0.299181 0.0600354 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 (( 0.207483 0.226335 0.210231 0.355951 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		  ( 0.00103734 0.747925 0.25 0.00103734 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		  ( 0.00409836 0.987705 0.00409836 0.00409836 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		  ( 0.959188 0.0136038 0.0136038 0.0136038 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 (( 0.118154 0.309637 0.262968 0.30924 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.00409836 0.987705 0.00409836 0.00409836 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.00409836 0.00409836 0.987705 0.00409836 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.285019 0.238327 0.238327 0.238327 )))	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+		((( 0.332382 0.232097 0.181406 0.254115 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.399434 0.118746 0.389687 0.0921328 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.1552 0.258618 0.430982 0.1552 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.354758 0.467309 0.177564 0.000369155 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 (( 0.180908 0.23067 0.333142 0.25528 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		  ( 0.00131084 0.996067 0.00131084 0.00131084 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		  ( 0.25 0.25 0.25 0.25 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		  ( 0.00561356 0.983159 0.00561356 0.00561356 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 (( 0.202569 0.159368 0.298742 0.33932 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.00371901 0.0962802 0.896282 0.00371901 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.25 0.25 0.25 0.25 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.201207 0.39638 0.201207 0.201207 )))	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+		((( 0.458253 0.0995888 0.320087 0.122071 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.259404 0.2593 0.308369 0.172927 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.380849 0.142942 0.476011 0.000198255 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.598837 0.000830565 0.399502 0.000830565 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 (( 0.480136 0.000993882 0.279344 0.239526 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		  ( 0.25 0.25 0.25 0.25 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		  ( 0.25 0.25 0.25 0.25 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		  ( 0.00409836 0.987705 0.00409836 0.00409836 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 (( 0.574423 0.082339 0.178481 0.164756 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.25 0.25 0.25 0.25 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.497934 0.00206612 0.497934 0.00206612 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.25 0.25 0.25 0.25 ))));	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+	experience
+	     = ((( 1434.87	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		   515.656	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		   297.839	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		   87.0122 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 ( 310.367	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		   16.3084	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		   1.0174	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		   3.01791 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 ( 531.659	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		   11.7711	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		   2.19322	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		   0.0198681 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+		(( 231.733	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		   99.2305	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		   65.0166	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		   15.0167 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 ( 54.274	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		   3.9202	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		   1.01668	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		   0.0166667 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 ( 82.7647	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		   4.34252	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		   1.01672	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		   0.0166667 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+		(( 161.9	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		   60.332	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		   54.0167	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		   16.7262 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 ( 44.2007	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		   4.01667	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		   1.01667	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		   0.306286 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 ( 51.6868	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		   1.01667	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		   1.01667	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		   0.017483 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+		(( 136.534	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		   65.1686	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		   58.0167	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		   11.287 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 ( 39.0349	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		   3.17863	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		   0.0166667	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		   0.74225 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 ( 50.2244	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		   1.12037	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		   0.0166667	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		   0.0207084 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+		(( 41.6124	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		   23.1553	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		   21.0167	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		   5.01667 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 ( 4.19232	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		   0.0166667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		   0.0166667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		   1.01667 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 ( 12.1955	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		   0.0166667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		   2.01667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		   0.0166667 )));	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+    }
+
+    potential (maxuv24)
+    {
+	data = ( 0.686611 0.174332 0.108843 0.0302133 );
+	experience = 4642;
+    }
+
+    potential (rain48x | maxuv24)
+    {
+	data = (( 0.629587 0.141837 0.228576 )	%  maxuv24=interval(0.08,5.98)
+		( 0.943518 0.0339086 0.0225732 )	%  maxuv24=interval(5.98,7.1)
+		( 0.981506 0.00610407 0.0123898 )	%  maxuv24=interval(7.1,7.92)
+		( 0.962986 0.0363621 0.000651642 ));	%  maxuv24=interval(7.92,12)
+	experience
+	     = ( 3187.25	%  maxuv24=interval(0.08,5.98)
+		 809.25	%  maxuv24=interval(5.98,7.1)
+		 505.25	%  maxuv24=interval(7.1,7.92)
+		 140.25 );	%  maxuv24=interval(7.92,12)
+    }
+
+    potential (geomean200 | prevgeomean10 rain48x maxuv24 meansalinty)
+    {
+	data = ((((( 0.969569 0.0304308 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.962942 0.037058 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.969006 0.0309936 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.983245 0.0167553 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.95839 0.04161 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.971607 0.0283928 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.941859 0.0581413 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.965713 0.0342866 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.897415 0.102585 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.923857 0.0761426 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.888873 0.111127 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.99995 4.95983E-05 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.954459 0.0455406 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.916581 0.0834188 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.97053 0.02947 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.85693 0.14307 )))	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.962483 0.037517 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.97575 0.0242499 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.972114 0.0278863 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.986065 0.013935 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.999138 0.0008616 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.752811 0.247189 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.777649 0.222351 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.997497 0.00250304 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.997927 0.00207317 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.57672 0.42328 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.66649 0.33351 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.5 0.5 )))	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.956146 0.0438544 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.942044 0.057956 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.916644 0.0833557 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.938386 0.0616135 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.805081 0.194919 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.998961 0.00103946 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.99948 0.000520291 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.996649 0.0033511 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.998236 0.00176446 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.997925 0.00207469 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.710581 0.289419 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.519571 0.480429 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))))	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		(((( 0.927029 0.0729705 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.983683 0.0163174 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.931005 0.0689952 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.98191 0.0180898 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.833675 0.166325 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.905516 0.0944835 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.803475 0.196525 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.999826 0.000173551 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.857037 0.142963 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.928508 0.0714925 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.999861 0.00013885 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.99974 0.000260281 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.997925 0.00207469 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.999584 0.00041632 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.999653 0.000346981 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.999307 0.000693481 )))	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.999757 0.000243237 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.852048 0.147952 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.999794 0.000205824 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.921755 0.0782454 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.505073 0.494927 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.998908 0.00109209 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.501142 0.498858 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.00207469 0.997925 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.5 0.5 )))	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.8817 0.1183 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.647342 0.352658 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.843299 0.156701 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.801924 0.198076 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.999068 0.000932275 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.999008 0.000992295 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.505735 0.494265 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.00207469 0.997925 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))))	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		(((( 0.916964 0.0830355 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.870962 0.129038 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.856195 0.143805 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.795482 0.204518 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.850827 0.149173 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.912969 0.0870313 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.549716 0.450284 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.874805 0.125195 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.899833 0.100167 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.857072 0.142928 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.599972 0.400028 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.624935 0.375065 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.999439 0.000560981 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.85693 0.14307 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.79975 0.20025 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.00207469 0.997925 )))	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.999773 0.000227168 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.899833 0.100167 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.89216 0.10784 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.809189 0.190811 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.999307 0.000693481 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.00207469 0.997925 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.997925 0.00207469 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.992909 0.00709133 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.5 0.5 )))	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.672167 0.327833 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.437516 0.562484 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.852701 0.147299 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.812178 0.187822 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.997925 0.00207469 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.00207469 0.997925 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.581911 0.418089 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))))	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		(((( 0.647387 0.352613 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.7707 0.2293 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.494022 0.505978 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.790621 0.209379 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.385258 0.614742 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.870507 0.129493 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.595675 0.404325 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.666551 0.333449 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.33341 0.66659 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.533324 0.466676 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.400017 0.599983 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.999769 0.000231374 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.000520291 0.99948 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.948329 0.0516715 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.99896 0.0010395 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.5 0.5 )))	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.574881 0.425119 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.55553 0.44447 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.846043 0.153957 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.899438 0.100562 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.999342 0.000658007 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.00285962 0.99714 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.5 0.5 )))	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.606633 0.393367 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.624935 0.375065 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.599972 0.400028 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.530454 0.469546 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.980687 0.0193135 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.997925 0.00207469 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.263739 0.736261 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))))	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		(((( 0.318157 0.681843 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.242769 0.757231 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.225839 0.774161 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.395046 0.604954 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.167234 0.832766 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.833102 0.166898 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.282523 0.717477 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.25026 0.74974 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.25013 0.74987 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.000693481 0.999307 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.000208247 0.999792 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.000693481 0.999307 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.0010395 0.99896 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.5 0.5 )))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.00536505 0.994635 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.00177895 0.998221 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.00207469 0.997925 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.00207469 0.997925 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.5 0.5 )))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.000471835 0.999528 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.00207469 0.997925 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.000957118 0.999043 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.501274 0.498726 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.00207469 0.997925 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.00207469 0.997925 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.5 0.5 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.5 0.5 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.5 0.5 )))));	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+	experience
+	     = (((( 394.405	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    271.011	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    336.114	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    433.341 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 144.246	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    140.954	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    142.897	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    87.5585 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 78.0042	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    78.8269	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    99.0042	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    42.0042 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 22.0042	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    24.0004	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    34.0035	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    7.00417 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 80.0193	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    86.642	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    71.7945	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    71.9112 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 2.41798	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    4.05392	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    9.00417	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.83232 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    1.0049	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00492188	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    3.00465	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 159.667	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    89.6635	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    119.993	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    162.336 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 5.14104	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    2.00424	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    4.00417	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.621687 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    1.18072	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    1.00417	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00719832	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00433641	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 )))	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		((( 54.8452	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    63.4208	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    45.7638	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    67.7031 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 24.0619	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    31.7736	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    31.3908	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    12.0042 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 14.0042	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    28.0041	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    15.0042	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    8.00417 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 1.00417	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    5.00417	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    6.00417	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    3.00417 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 8.56503	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    20.2909	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    10.1219	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    15.2961 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 2.00417	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    0.00420938	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    1.90766	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    0.0041762	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    1.00417	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 16.9238	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    28.362	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    19.158	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    18.3209 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    2.23468	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    2.09951	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    0.00421501	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    1.00417	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 )))	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		((( 36.1542	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    48.3161	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    36.5248	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    40.9052 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 20.1248	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    23.0042	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    9.19887	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    8.00417 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 10.0042	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    21.0042	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    15.0042	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    8.00417 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 3.71373	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    7.00417	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    5.00417	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    1.00417 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 9.17089	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    10.0042	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    9.29233	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    15.7333 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    3.00417	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    1.00417	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    1.00417	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.293786	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 6.10703	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    16.0042	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    13.592	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    15.9836 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    1.00417	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    1.00417	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00498299	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 )))	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		((( 45.3815	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    31.6891	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    24.7682	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    34.6954 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 26.0306	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    7.7385	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    25.3954	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    6.00417 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 9.00417	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    15.0042	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    25.0042	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    9.00417 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 4.00417	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    5.27454	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    2.00417	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 7.06175	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    9.00417	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    13.0042	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    9.96483 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    3.16613	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.72975	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 10.1739	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    8.00417	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    15.0042	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    17.0422 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    0.107869	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    1.00417	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.0082084	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 )))	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		((( 19.069	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    4.14413	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    13.3196	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    5.07967 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 6.00659	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    6.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    7.14039	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    4.00417 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 8.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    3.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    10.0042	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 3.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    2.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 2.01288	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    1.1711	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    1.00417 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    1.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 7.00539	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    1.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    2.17667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    2.00929 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 1.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    1.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))));	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+    }
+
+    potential (waveht24 | meantemp24 rain48x maxuv24)
+    {
+	data = (((( 0.728001 0.271986 1.30234E-05 )	%  meantemp24=interval(5.8,15.3)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.218967 0.780744 0.000289058 )	%  meantemp24=interval(5.8,15.3)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.334856 0.332572 0.332572 )	%  meantemp24=interval(5.8,15.3)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.26677 0.46646 0.26677 ))	%  meantemp24=interval(5.8,15.3)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 (( 0.418142 0.581827 3.10655E-05 )	%  meantemp24=interval(5.8,15.3)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		  ( 0.991479 0.00426058 0.00426058 )	%  meantemp24=interval(5.8,15.3)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		  ( 0.336039 0.331981 0.331981 )	%  meantemp24=interval(5.8,15.3)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		  ( 0.0535832 0.892834 0.0535832 ))	%  meantemp24=interval(5.8,15.3)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 (( 0.371446 0.628533 2.08374E-05 )	%  meantemp24=interval(5.8,15.3)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.978897 0.0105517 0.0105517 )	%  meantemp24=interval(5.8,15.3)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.336115 0.331942 0.331942 )	%  meantemp24=interval(5.8,15.3)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.325648 0.348705 0.325648 )))	%  meantemp24=interval(5.8,15.3)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+		((( 0.74306 0.247215 0.00972549 )	%  meantemp24=interval(15.3,18.7)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.696669 0.303298 3.32497E-05 )	%  meantemp24=interval(15.3,18.7)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.685361 0.314494 0.000145532 )	%  meantemp24=interval(15.3,18.7)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.356974 0.642476 0.000550037 ))	%  meantemp24=interval(15.3,18.7)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 (( 0.542497 0.45743 7.34658E-05 )	%  meantemp24=interval(15.3,18.7)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		  ( 0.67793 0.3215 0.000570168 )	%  meantemp24=interval(15.3,18.7)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		  ( 0.336039 0.331981 0.331981 )	%  meantemp24=interval(15.3,18.7)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		  ( 0.0535832 0.892834 0.0535832 ))	%  meantemp24=interval(15.3,18.7)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 (( 0.489063 0.479917 0.0310205 )	%  meantemp24=interval(15.3,18.7)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.000814928 0.99837 0.000814928 )	%  meantemp24=interval(15.3,18.7)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.997015 0.00149243 0.00149243 )	%  meantemp24=interval(15.3,18.7)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.325648 0.348705 0.325648 )))	%  meantemp24=interval(15.3,18.7)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+		((( 0.826044 0.173918 3.79786E-05 )	%  meantemp24=interval(18.7,26)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.863709 0.136267 2.38075E-05 )	%  meantemp24=interval(18.7,26)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.790725 0.209252 2.30566E-05 )	%  meantemp24=interval(18.7,26)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.653838 0.346084 7.8342E-05 ))	%  meantemp24=interval(18.7,26)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 (( 0.817485 0.182076 0.000439441 )	%  meantemp24=interval(18.7,26)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		  ( 0.997682 0.00115894 0.00115894 )	%  meantemp24=interval(18.7,26)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		  ( 0.00322914 0.993713 0.00305758 )	%  meantemp24=interval(18.7,26)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		  ( 0.996032 0.00202065 0.00194761 ))	%  meantemp24=interval(18.7,26)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 (( 0.50076 0.498783 0.000457211 )	%  meantemp24=interval(18.7,26)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		  ( 0.333333 0.333333 0.333333 )	%  meantemp24=interval(18.7,26)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		  ( 0.336115 0.331942 0.331942 )	%  meantemp24=interval(18.7,26)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		  ( 0.440744 0.291075 0.268182 ))));	%  meantemp24=interval(18.7,26)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+	experience
+	     = ((( 711.69	%  meantemp24=interval(5.8,15.3)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		   32.0326	%  meantemp24=interval(5.8,15.3)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		   0.0278414	%  meantemp24=interval(5.8,15.3)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		   0.0347088 )	%  meantemp24=interval(5.8,15.3)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 ( 299.458	%  meantemp24=interval(5.8,15.3)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		   2.17324	%  meantemp24=interval(5.8,15.3)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		   0.027891	%  meantemp24=interval(5.8,15.3)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		   0.172801 )	%  meantemp24=interval(5.8,15.3)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 ( 472.946	%  meantemp24=interval(5.8,15.3)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		   0.877512	%  meantemp24=interval(5.8,15.3)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		   0.0278942	%  meantemp24=interval(5.8,15.3)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		   0.0284334 ))	%  meantemp24=interval(5.8,15.3)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+		(( 788.862	%  meantemp24=interval(15.3,18.7)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		   283.482	%  meantemp24=interval(15.3,18.7)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		   63.6237	%  meantemp24=interval(15.3,18.7)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		   16.8339 )	%  meantemp24=interval(15.3,18.7)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 ( 126.2	%  meantemp24=interval(15.3,18.7)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		   16.2395	%  meantemp24=interval(15.3,18.7)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		   0.027891	%  meantemp24=interval(15.3,18.7)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		   0.172801 )	%  meantemp24=interval(15.3,18.7)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 ( 235.272	%  meantemp24=interval(15.3,18.7)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		   11.3621	%  meantemp24=interval(15.3,18.7)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		   6.20415	%  meantemp24=interval(15.3,18.7)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		   0.0284334 ))	%  meantemp24=interval(15.3,18.7)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+		(( 506.099	%  meantemp24=interval(18.7,26)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)
+		   448.028	%  meantemp24=interval(18.7,26)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)
+		   432.254	%  meantemp24=interval(18.7,26)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)
+		   118.19 )	%  meantemp24=interval(18.7,26)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)
+		 ( 26.4109	%  meantemp24=interval(18.7,26)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)
+		   9.02778	%  meantemp24=interval(18.7,26)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)
+		   3.0283	%  meantemp24=interval(18.7,26)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)
+		   4.75418 )	%  meantemp24=interval(18.7,26)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)
+		 ( 20.3124	%  meantemp24=interval(18.7,26)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)
+		   6.02778	%  meantemp24=interval(18.7,26)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)
+		   0.0278942	%  meantemp24=interval(18.7,26)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)
+		   0.0345261 )));	%  meantemp24=interval(18.7,26)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)
+    }
+
+    potential (meantemp24 | prevgeomean10 rain48x maxuv24 meansalinty)
+    {
+	data = ((((( 0.363471 0.375004 0.261525 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.372231 0.469523 0.158246 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.35387 0.394158 0.251972 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.388092 0.360642 0.251266 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.0585852 0.303607 0.637808 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.0354823 0.51046 0.454058 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.0419981 0.524112 0.43389 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.0977143 0.17133 0.730956 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 1.78053E-05 0.0641169 0.935865 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 1.81493E-05 0.349281 0.650701 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 1.40286E-05 0.121221 0.878765 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 3.30655E-05 0.0714546 0.928512 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 6.31194E-05 6.31194E-05 0.999874 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 6.24504E-05 0.0898373 0.9101 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 4.28617E-05 0.154532 0.845426 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.000198295 0.000198295 0.999603 )))	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.706077 0.230194 0.0637292 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.638029 0.29211 0.0698611 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.729016 0.199836 0.0711482 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.741686 0.230324 0.0279897 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.171715 0.82771 0.0005744 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.000342604 0.999315 0.000342604 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.00015425 0.555453 0.444393 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.996663 0.00166869 0.00166869 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.00149003 0.00149003 0.99702 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.311018 0.311018 0.377963 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.000486414 0.000486414 0.999027 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 )))	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.623572 0.300251 0.0761765 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.694974 0.30501 1.56962E-05 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.6342 0.365788 1.17784E-05 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.721161 0.27883 8.60911E-06 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.0268934 0.778323 0.194783 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.000692977 0.000727859 0.998579 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.000346861 0.499827 0.499827 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.995532 0.00223407 0.00223407 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.00126653 0.997467 0.00126653 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.00138313 0.997234 0.00138313 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.222785 0.222785 0.55443 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.335829 0.335829 0.328342 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))))	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		(((( 0.324145 0.483293 0.192562 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.323344 0.414862 0.261794 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.31754 0.452011 0.230449 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.365862 0.358271 0.275868 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 5.77215E-05 0.168695 0.831247 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.0315164 0.464877 0.503606 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 8.13557E-05 0.426458 0.573461 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.000115701 0.250029 0.749855 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 9.91768E-05 9.91768E-05 0.999802 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 5.0375E-05 0.0737737 0.926176 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 9.25669E-05 9.25669E-05 0.999815 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.000173521 0.000173521 0.999653 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.00138313 0.00138313 0.997234 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.000277546 0.200111 0.799611 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.000231321 0.499884 0.499884 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.000462321 0.000462321 0.999075 )))	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.619739 0.380096 0.000165448 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.457749 0.443616 0.0986346 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.498643 0.300058 0.201299 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.738313 0.261596 9.08004E-05 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.000693001 0.998614 0.000693001 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.329951 0.340098 0.329951 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.474341 0.000728059 0.524931 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.333709 0.333709 0.332583 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.00138313 0.00138313 0.997234 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 )))	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.624125 0.253998 0.121877 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.471025 0.493668 0.0353075 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.63098 0.368947 7.32061E-05 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.836101 0.163823 7.58089E-05 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.000621517 0.998757 0.000621517 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.0460734 0.953265 0.00066153 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.331852 0.336295 0.331852 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.00138313 0.997234 0.00138313 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))))	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		(((( 0.294181 0.169417 0.536402 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.250037 0.480873 0.26909 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.202169 0.431009 0.366822 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.43309 0.419289 0.147621 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 6.90137E-05 0.353894 0.646037 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 6.03755E-05 0.173942 0.825998 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.000150985 0.456153 0.543696 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.000173521 0.000173521 0.999653 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.000138831 0.200056 0.799806 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 6.61244E-05 0.142895 0.857039 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 9.25669E-05 0.133389 0.866519 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.000173521 0.125108 0.874718 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.0015718 0.000997479 0.997431 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.000198295 0.428515 0.571287 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.000277546 0.000277546 0.999445 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.00138313 0.00138313 0.997234 )))	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.444393 0.555453 0.000154251 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.699847 0.300014 0.000138831 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.557239 0.111268 0.331493 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.419925 0.579986 8.87565E-05 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.000462321 0.666204 0.333333 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.00138313 0.00138313 0.997234 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.00138313 0.00138313 0.997234 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.497631 0.497631 0.00473864 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 )))	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.499884 0.333333 0.166782 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.687408 0.312505 8.6783E-05 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.385806 0.53724 0.0769538 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.936004 0.0639076 8.87093E-05 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.00138313 0.00138313 0.997234 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.00138313 0.997234 0.00138313 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.351505 0.351505 0.296989 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))))	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		(((( 0.244867 0.292358 0.462775 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.476423 0.428864 0.0947135 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.327139 0.34981 0.323052 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.329041 0.325051 0.345907 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 5.33561E-05 0.154733 0.845214 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.000179478 0.611969 0.387851 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.0394319 0.409232 0.551336 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.000231321 0.166782 0.832986 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.00015425 0.00015425 0.999692 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 9.25669E-05 0.200037 0.79987 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 5.55463E-05 0.0400489 0.959896 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.00015425 0.00015425 0.999692 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.000346861 0.000346861 0.999306 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.000700161 0.264896 0.734404 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.000693001 0.000693001 0.998614 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 )))	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.291566 0.566629 0.141805 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.444393 0.555453 0.00015425 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.769091 0.230802 0.000106803 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.899368 0.100492 0.000139379 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.000438671 0.367436 0.632125 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.00190477 0.00190477 0.99619 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 )))	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.508275 0.393298 0.098427 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.499913 0.499913 0.000173521 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.333333 0.533278 0.133389 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.706447 0.293472 8.14972E-05 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.0128757 0.974249 0.0128757 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.00138313 0.997234 0.00138313 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.170511 0.170511 0.658979 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))))	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		(((( 0.265679 0.262278 0.472043 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.483906 0.515759 0.000335146 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.0795793 0.525335 0.395086 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.212 0.787727 0.000273421 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.000231227 0.167119 0.83265 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.166782 0.333333 0.499884 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.000194512 0.439417 0.560388 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.250087 0.250087 0.499827 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.000173521 0.000173521 0.999653 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.000462321 0.333333 0.666204 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.000138831 0.100097 0.899764 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.000462321 0.000462321 0.999075 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.000693001 0.499653 0.499653 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 )))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.50182 0.49749 0.00069 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.997157 0.0014215 0.0014215 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.997234 0.00138313 0.00138313 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.00138313 0.00138313 0.997234 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 )))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 ((( 0.571362 0.42844 0.00019826 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		   ( 0.00138313 0.997234 0.00138313 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		   ( 0.499652 0.499652 0.000695037 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		   ( 0.500929 0.49838 0.000691235 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  (( 0.00138313 0.997234 0.00138313 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		   ( 0.00138313 0.997234 0.00138313 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  (( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		   ( 0.333333 0.333333 0.333333 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		   ( 0.333333 0.333333 0.333333 )))));	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+	experience
+	     = (((( 394.405	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    271.011	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    336.114	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    433.341 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 144.246	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    140.954	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    142.897	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    87.5585 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 78.0042	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    78.8269	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    99.0042	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    42.0042 )	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 22.0042	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    24.0004	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    34.0035	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    7.00417 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 80.0193	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    86.642	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    71.7945	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    71.9112 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 2.41798	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    4.05392	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    9.00417	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.83232 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    1.0049	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00492188	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    3.00465	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))	%  prevgeomean10=interval(0,50)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 159.667	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    89.6635	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    119.993	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    162.336 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 5.14104	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    2.00424	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    4.00417	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.621687 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    1.18072	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    1.00417	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00719832	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00433641	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 )))	%  prevgeomean10=interval(0,50)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		((( 54.8452	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    63.4208	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    45.7638	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    67.7031 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 24.0619	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    31.7736	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    31.3908	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    12.0042 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 14.0042	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    28.0041	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    15.0042	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    8.00417 )	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 1.00417	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    5.00417	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    6.00417	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    3.00417 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 8.56503	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    20.2909	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    10.1219	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    15.2961 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 2.00417	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    0.00420938	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    1.90766	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    0.0041762	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    1.00417	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))	%  prevgeomean10=interval(50,100)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 16.9238	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    28.362	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    19.158	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    18.3209 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    2.23468	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    2.09951	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    0.00421501	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    1.00417	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 )))	%  prevgeomean10=interval(50,100)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		((( 36.1542	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    48.3161	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    36.5248	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    40.9052 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 20.1248	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    23.0042	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    9.19887	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    8.00417 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 10.0042	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    21.0042	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    15.0042	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    8.00417 )	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 3.71373	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    7.00417	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    5.00417	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    1.00417 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 9.17089	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    10.0042	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    9.29233	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    15.7333 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    3.00417	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    1.00417	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    1.00417	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.293786	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))	%  prevgeomean10=interval(100,200)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 6.10703	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    16.0042	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    13.592	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    15.9836 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    1.00417	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    1.00417	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00498299	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 )))	%  prevgeomean10=interval(100,200)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		((( 45.3815	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    31.6891	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    24.7682	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    34.6954 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 26.0306	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    7.7385	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    25.3954	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    6.00417 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 9.00417	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    15.0042	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    25.0042	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    9.00417 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 4.00417	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    5.27454	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    2.00417	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 7.06175	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    9.00417	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    13.0042	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    9.96483 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    3.16613	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.72975	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))	%  prevgeomean10=interval(200,1000)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 10.1739	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    8.00417	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    15.0042	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    17.0422 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    0.107869	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    1.00417	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.0082084	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 )))	%  prevgeomean10=interval(200,1000)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		((( 19.069	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    4.14413	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    13.3196	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    5.07967 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 6.00659	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    6.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    7.14039	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    4.00417 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 8.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    3.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    10.0042	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 3.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    2.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(0,2.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 2.01288	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    1.1711	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    1.00417 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    1.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))	%  prevgeomean10=interval(1000,24196)  rain48x=interval(2.5,7.6)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+		 (( 7.00539	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16 - 21
+		    1.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=0 - 11
+		    2.17667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=16-Nov
+		    2.00929 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(0.08,5.98)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(5.98,7.1)  meansalinty=21 - 35
+		  ( 1.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=0 - 11
+		    1.00417	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=16-Nov
+		    0.00416667 )	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.1,7.92)  meansalinty=21 - 35
+		  ( 0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16 - 21
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=0 - 11
+		    0.00416667	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=16-Nov
+		    0.00416667 ))));	%  prevgeomean10=interval(1000,24196)  rain48x=interval(7.6,76.5)  maxuv24=interval(7.92,12)  meansalinty=21 - 35
+    }
+
+    potential (prevgeomean10)
+    {
+	data = ( 0.691885 0.120285 0.0853626 0.0787077 0.0237589 );
+	experience = 4642;
+    }
+} % class VancouverMerged_Condensed_NO_ID_DISCRETIZED_03062024

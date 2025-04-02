@@ -8,7 +8,7 @@ box::use(
 generate_barchart <- function(filtered_data) {
   ggplot(filtered_data, aes(x = rep_name, y = deal_amount, fill = rep_name)) +
     geom_bar(stat = "identity") +
-    labs(x = "Sales Rep Name", y = "Deal Amount") +
+    labs(x = "Scientist Group Study", y = "Collection Amount", fill ="Lab") +
     theme_light() +
     theme(axis.text.x = element_text(angle = 60, hjust = 1))
 }

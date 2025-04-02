@@ -1,0 +1,432 @@
+class ManitobaMerged_Condensed_Discretized_with_NO_ID_20240228
+{
+    inputs = ();
+    outputs = ();
+    node_size = (80 40);
+    HR_Has_Constraints = "yes";
+    HR_DBN_Num_Slices = "5";
+    HR_Desc = "";
+    HR_OOBN_CheckConsistency = "1";
+    HR_OOBN_FitExpand = "1";
+    HR_Zoom_ZoomFactor = "100";
+    HR_Groups_GroupColors = "";
+    HR_Groups_GroupNames = "";
+    HR_Groups_UserGroupsNo = "0";
+    HR_Utility_Link = "63";
+    HR_Probabilistic_Link = "63";
+    HR_Functional_Link = "63";
+    HR_Binding_Link = "63";
+    HR_Information_Arc = "63";
+    HR_Color_Interface = "21";
+    HR_Color_Instance = "0";
+    HR_Color_DiscreteFunction = "5";
+    HR_Color_Function = "4";
+    HR_Color_Utility = "36";
+    HR_Color_Decision = "17";
+    HR_Color_ContinuousChance = "48";
+    HR_Color_DiscreteChance = "16";
+    HR_Monitor_InitSD = "2";
+    HR_Monitor_Utility_Arrange = "0";
+    HR_Monitor_Mean_Variance = "1";
+    HR_Monitor_Chance_Utility = "1";
+    HR_Monitor_InitStates = "5";
+    HR_Monitor_OpenGraph = "0";
+    HR_Monitor_GraphPrecision = "100";
+    HR_Monitor_AutoUpdGraph = "0";
+    HR_Compile_MaxMinimalSeparators = "100000";
+    HR_Compile_ApproxEpsilon = "1.0E-5";
+    HR_Compile_Approximate = "0";
+    HR_Compile_SaveToMemory = "0";
+    HR_Compile_Compress = "0";
+    HR_Compile_TriangMethod = "0";
+    HR_Propagate_AutoNormal = "1";
+    HR_Propagate_AutoSum = "1";
+    HR_Propagate_Auto = "1";
+    HR_Font_Italic = "0";
+    HR_Font_Weight = "400";
+    HR_Font_Size = "-12";
+    HR_Font_Name = "com.apple.laf.AquaFonts$DerivedUIResourceFont[family=Lucida Grande,name=Lucida Grande,style=plain,size=13]";
+    HR_Grid_GridShow = "0";
+    HR_Grid_GridSnap = "0";
+    HR_Grid_Y = "40";
+    HR_Grid_X = "40";
+
+    node dayssincerain
+    {
+	position = (74 82);
+	states = ("0 - 3" "07-Mar" "14-Jul" "14 - 18");
+	HR_LinkGroup = "[rain48:0][maxuv24:0][geomean200:0][prevgeomean:0][meantemp24:0]";
+	HR_LinkMode = "[rain48:0][maxuv24:0][geomean200:0][prevgeomean:0][meantemp24:0]";
+    }
+
+    node rain48
+    {
+	position = (275 50);
+	states = ("" "" "");
+	subtype = interval;
+	state_values = (0 2.5 7.6 93);
+	HR_LinkGroup = "[geomean200:0][maxuv24:0][prevgeomean:0][meantemp24:0]";
+	HR_LinkMode = "[geomean200:0][maxuv24:0][prevgeomean:0][meantemp24:0]";
+    }
+
+    node maxuv24
+    {
+	position = (214 110);
+	states = ("" "" "" "");
+	subtype = interval;
+	state_values = (0 4.55 5.52 6.3 10);
+	HR_LinkGroup = "[rain48:0][geomean200:0][prevgeomean:0][meantemp24:0]";
+	HR_LinkMode = "[rain48:0][geomean200:0][prevgeomean:0][meantemp24:0]";
+    }
+
+    node geomean200
+    {
+	position = (361 161);
+	states = ("" "");
+	subtype = number;
+	state_values = (0 1);
+	HR_Constraint_prevgeomean = "NoArrow";
+	HR_Constraint_meantemp24 = "NoArrow";
+	HR_Constraint_maxuv24 = "NoArrow";
+	HR_Constraint_rain48 = "NoArrow";
+	HR_LinkGroup = "[rain48:0][maxuv24:0][meantemp24:0][prevgeomean:0]";
+	HR_LinkMode = "[rain48:0][maxuv24:0][meantemp24:0][prevgeomean:0]";
+    }
+
+    node prevgeomean
+    {
+	position = (100 153);
+	states = ("" "" "" "" "");
+	subtype = interval;
+	state_values = (0 50 100 200 1000 7400);
+	HR_Constraint_rain48 = "NoArrow";
+	HR_Constraint_meantemp24 = "NoArrow";
+	HR_Constraint_maxuv24 = "NoArrow";
+	HR_Constraint_dayssincerain = "NoArrow";
+	HR_LinkGroup = "[dayssincerain:0][maxuv24:0][meantemp24:0][rain48:0][geomean200:0]";
+	HR_LinkMode = "[dayssincerain:0][maxuv24:0][meantemp24:0][rain48:0][geomean200:0]";
+    }
+
+    node meantemp24
+    {
+	position = (210 210);
+	states = ("" "" "" "");
+	subtype = interval;
+	state_values = (1.3 6.54 11.78 22.26 27.5);
+	HR_LinkGroup = "[rain48:0][maxuv24:0][geomean200:0]";
+	HR_LinkMode = "[rain48:0][maxuv24:0][geomean200:0]";
+    }
+
+    potential (dayssincerain)
+    {
+	data = ( 0.761289 0.194866 0.0393801 0.0044646 );
+	experience = 2225;
+    }
+
+    potential (rain48 | meantemp24 maxuv24 dayssincerain)
+    {
+	data = (((( 0.494665 0.242337 0.262999 )	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(0,4.55)  dayssincerain=0 - 3
+		  ( 0.354365 0.323552 0.322083 )	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(0,4.55)  dayssincerain=07-Mar
+		  ( 0.997446 0.00127757 0.00127598 )	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(0,4.55)  dayssincerain=14-Jul
+		  ( 0.332339 0.335317 0.332344 ))	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(0,4.55)  dayssincerain=14 - 18
+		 (( 0.564465 0.434124 0.00141118 )	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(4.55,5.52)  dayssincerain=0 - 3
+		  ( 0.997476 0.00125915 0.00126521 )	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(4.55,5.52)  dayssincerain=07-Mar
+		  ( 0.340669 0.329478 0.329853 )	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(4.55,5.52)  dayssincerain=14-Jul
+		  ( 0.327846 0.334588 0.337567 ))	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(4.55,5.52)  dayssincerain=14 - 18
+		 (( 0.524069 0.290976 0.184955 )	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(5.52,6.3)  dayssincerain=0 - 3
+		  ( 0.995413 0.00229413 0.0022926 )	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(5.52,6.3)  dayssincerain=07-Mar
+		  ( 0.342921 0.32859 0.328489 )	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(5.52,6.3)  dayssincerain=14-Jul
+		  ( 0.340262 0.330088 0.32965 ))	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(5.52,6.3)  dayssincerain=14 - 18
+		 (( 0.995049 0.00259963 0.00235106 )	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(6.3,10)  dayssincerain=0 - 3
+		  ( 0.432755 0.283698 0.283546 )	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(6.3,10)  dayssincerain=07-Mar
+		  ( 0.345907 0.327078 0.327015 )	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(6.3,10)  dayssincerain=14-Jul
+		  ( 0.3328 0.333774 0.333426 )))	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(6.3,10)  dayssincerain=14 - 18
+		((( 0.487067 0.106717 0.406217 )	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(0,4.55)  dayssincerain=0 - 3
+		  ( 0.999079 0.000459405 0.000461342 )	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(0,4.55)  dayssincerain=07-Mar
+		  ( 0.996676 0.00166048 0.00166348 )	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(0,4.55)  dayssincerain=14-Jul
+		  ( 0.330562 0.332364 0.337074 ))	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(0,4.55)  dayssincerain=14 - 18
+		 (( 0.436586 0.175871 0.387543 )	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(4.55,5.52)  dayssincerain=0 - 3
+		  ( 0.989367 0.00533567 0.00529695 )	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(4.55,5.52)  dayssincerain=07-Mar
+		  ( 0.996748 0.00162781 0.00162377 )	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(4.55,5.52)  dayssincerain=14-Jul
+		  ( 0.334475 0.336277 0.329247 ))	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(4.55,5.52)  dayssincerain=14 - 18
+		 (( 0.726279 0.0954154 0.178305 )	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(5.52,6.3)  dayssincerain=0 - 3
+		  ( 0.998483 0.000760399 0.000757028 )	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(5.52,6.3)  dayssincerain=07-Mar
+		  ( 0.996644 0.00167931 0.00167706 )	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(5.52,6.3)  dayssincerain=14-Jul
+		  ( 0.335852 0.333702 0.330446 ))	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(5.52,6.3)  dayssincerain=14 - 18
+		 (( 0.557506 0.0624127 0.380081 )	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(6.3,10)  dayssincerain=0 - 3
+		  ( 0.9982 0.000900463 0.000899424 )	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(6.3,10)  dayssincerain=07-Mar
+		  ( 0.370924 0.314636 0.31444 )	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(6.3,10)  dayssincerain=14-Jul
+		  ( 0.335291 0.332872 0.331837 )))	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(6.3,10)  dayssincerain=14 - 18
+		((( 0.410875 0.115193 0.473932 )	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(0,4.55)  dayssincerain=0 - 3
+		  ( 0.999498 0.000251003 0.000250953 )	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(0,4.55)  dayssincerain=07-Mar
+		  ( 0.999194 0.000403255 0.000403096 )	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(0,4.55)  dayssincerain=14-Jul
+		  ( 0.996414 0.00179344 0.001793 ))	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(0,4.55)  dayssincerain=14 - 18
+		 (( 0.521016 0.264864 0.214121 )	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(4.55,5.52)  dayssincerain=0 - 3
+		  ( 0.999865 6.79511E-05 6.75016E-05 )	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(4.55,5.52)  dayssincerain=07-Mar
+		  ( 0.998602 0.000703311 0.000694745 )	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(4.55,5.52)  dayssincerain=14-Jul
+		  ( 0.996334 0.00184036 0.00182604 ))	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(4.55,5.52)  dayssincerain=14 - 18
+		 (( 0.562232 0.232668 0.205101 )	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(5.52,6.3)  dayssincerain=0 - 3
+		  ( 0.999842 7.87119E-05 7.92681E-05 )	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(5.52,6.3)  dayssincerain=07-Mar
+		  ( 0.99841 0.000789682 0.000800592 )	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(5.52,6.3)  dayssincerain=14-Jul
+		  ( 0.9883 0.0058238 0.00587588 ))	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(5.52,6.3)  dayssincerain=14 - 18
+		 (( 0.575596 0.218515 0.205888 )	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(6.3,10)  dayssincerain=0 - 3
+		  ( 0.999882 5.91145E-05 5.89684E-05 )	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(6.3,10)  dayssincerain=07-Mar
+		  ( 0.999312 0.000344768 0.000343338 )	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(6.3,10)  dayssincerain=14-Jul
+		  ( 0.333587 0.333657 0.332757 )))	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(6.3,10)  dayssincerain=14 - 18
+		((( 0.330041 0.323636 0.346323 )	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(0,4.55)  dayssincerain=0 - 3
+		  ( 0.994827 0.00262243 0.00255098 )	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(0,4.55)  dayssincerain=07-Mar
+		  ( 0.357664 0.324042 0.318295 )	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(0,4.55)  dayssincerain=14-Jul
+		  ( 0.336167 0.343923 0.31991 ))	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(0,4.55)  dayssincerain=14 - 18
+		 (( 0.396842 0.274038 0.32912 )	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(4.55,5.52)  dayssincerain=0 - 3
+		  ( 0.9987 0.00064171 0.000658262 )	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(4.55,5.52)  dayssincerain=07-Mar
+		  ( 0.992749 0.00359687 0.00365393 )	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(4.55,5.52)  dayssincerain=14-Jul
+		  ( 0.333373 0.323102 0.343525 ))	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(4.55,5.52)  dayssincerain=14 - 18
+		 (( 0.622114 0.157224 0.220662 )	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(5.52,6.3)  dayssincerain=0 - 3
+		  ( 0.745729 0.129175 0.125096 )	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(5.52,6.3)  dayssincerain=07-Mar
+		  ( 0.995378 0.00233276 0.0022888 )	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(5.52,6.3)  dayssincerain=14-Jul
+		  ( 0.327293 0.346346 0.326361 ))	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(5.52,6.3)  dayssincerain=14 - 18
+		 (( 0.63965 0.0560134 0.304337 )	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(6.3,10)  dayssincerain=0 - 3
+		  ( 0.998467 0.000763505 0.000769976 )	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(6.3,10)  dayssincerain=07-Mar
+		  ( 0.522615 0.238026 0.239359 )	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(6.3,10)  dayssincerain=14-Jul
+		  ( 0.33444 0.329076 0.336484 ))));	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(6.3,10)  dayssincerain=14 - 18
+	experience
+	     = ((( 11.9821	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(0,4.55)  dayssincerain=0 - 3
+		   0.0211178	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(0,4.55)  dayssincerain=07-Mar
+		   4.49027	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(0,4.55)  dayssincerain=14-Jul
+		   0.0263485 )	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(0,4.55)  dayssincerain=14 - 18
+		 ( 11.506	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(4.55,5.52)  dayssincerain=0 - 3
+		   5.70681	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(4.55,5.52)  dayssincerain=07-Mar
+		   0.0176229	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(4.55,5.52)  dayssincerain=14-Jul
+		   0.0290048 )	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(4.55,5.52)  dayssincerain=14 - 18
+		 ( 0.0632465	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(5.52,6.3)  dayssincerain=0 - 3
+		   3.31861	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(5.52,6.3)  dayssincerain=07-Mar
+		   0.0178302	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(5.52,6.3)  dayssincerain=14-Jul
+		   0.032389 )	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(5.52,6.3)  dayssincerain=14 - 18
+		 ( 5.2426	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(6.3,10)  dayssincerain=0 - 3
+		   0.0241586	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(6.3,10)  dayssincerain=07-Mar
+		   0.0175543	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(6.3,10)  dayssincerain=14-Jul
+		   0.0266292 ))	%  meantemp24=interval(1.3,6.54)  maxuv24=interval(6.3,10)  dayssincerain=14 - 18
+		(( 113.735	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(0,4.55)  dayssincerain=0 - 3
+		   16.9487	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(0,4.55)  dayssincerain=07-Mar
+		   3.93339	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(0,4.55)  dayssincerain=14-Jul
+		   0.0600577 )	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(0,4.55)  dayssincerain=14 - 18
+		 ( 34.5042	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(4.55,5.52)  dayssincerain=0 - 3
+		   1.66374	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(4.55,5.52)  dayssincerain=07-Mar
+		   4.179	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(4.55,5.52)  dayssincerain=14-Jul
+		   0.0925341 )	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(4.55,5.52)  dayssincerain=14 - 18
+		 ( 32.1609	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(5.52,6.3)  dayssincerain=0 - 3
+		   14.545	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(5.52,6.3)  dayssincerain=07-Mar
+		   4.2686	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(5.52,6.3)  dayssincerain=14-Jul
+		   0.167704 )	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(5.52,6.3)  dayssincerain=14 - 18
+		 ( 22.6988	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(6.3,10)  dayssincerain=0 - 3
+		   8.86932	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(6.3,10)  dayssincerain=07-Mar
+		   0.0209613	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(6.3,10)  dayssincerain=14-Jul
+		   0.0654979 ))	%  meantemp24=interval(6.54,11.78)  maxuv24=interval(6.3,10)  dayssincerain=14 - 18
+		(( 349.787	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(0,4.55)  dayssincerain=0 - 3
+		   27.917	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(0,4.55)  dayssincerain=07-Mar
+		   18.7614	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(0,4.55)  dayssincerain=14-Jul
+		   3.82404 )	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(0,4.55)  dayssincerain=14 - 18
+		 ( 315.727	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(4.55,5.52)  dayssincerain=0 - 3
+		   108.017	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(4.55,5.52)  dayssincerain=07-Mar
+		   11.7058	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(4.55,5.52)  dayssincerain=14-Jul
+		   3.93247 )	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(4.55,5.52)  dayssincerain=14 - 18
+		 ( 354.667	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(5.52,6.3)  dayssincerain=0 - 3
+		   101.244	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(5.52,6.3)  dayssincerain=07-Mar
+		   12.2785	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(5.52,6.3)  dayssincerain=14-Jul
+		   1.37852 )	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(5.52,6.3)  dayssincerain=14 - 18
+		 ( 302.057	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(6.3,10)  dayssincerain=0 - 3
+		   118.055	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(6.3,10)  dayssincerain=07-Mar
+		   21.8041	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(6.3,10)  dayssincerain=14-Jul
+		   0.0204671 ))	%  meantemp24=interval(11.78,22.26)  maxuv24=interval(6.3,10)  dayssincerain=14 - 18
+		(( 0.0271013	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(0,4.55)  dayssincerain=0 - 3
+		   3.14722	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(0,4.55)  dayssincerain=07-Mar
+		   0.0231635	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(0,4.55)  dayssincerain=14-Jul
+		   0.0520514 )	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(0,4.55)  dayssincerain=14 - 18
+		 ( 26.6014	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(4.55,5.52)  dayssincerain=0 - 3
+		   13.51	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(4.55,5.52)  dayssincerain=07-Mar
+		   2.14263	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(4.55,5.52)  dayssincerain=14-Jul
+		   0.0629634 )	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(4.55,5.52)  dayssincerain=14 - 18
+		 ( 38.723	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(5.52,6.3)  dayssincerain=0 - 3
+		   0.0912838	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(5.52,6.3)  dayssincerain=07-Mar
+		   3.92903	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(5.52,6.3)  dayssincerain=14-Jul
+		   0.112662 )	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(5.52,6.3)  dayssincerain=14 - 18
+		 ( 74.3848	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(6.3,10)  dayssincerain=0 - 3
+		   10.4987	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(6.3,10)  dayssincerain=07-Mar
+		   0.0309364	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(6.3,10)  dayssincerain=14-Jul
+		   0.0503997 )));	%  meantemp24=interval(22.26,27.5)  maxuv24=interval(6.3,10)  dayssincerain=14 - 18
+    }
+
+    potential (maxuv24 | meantemp24 dayssincerain)
+    {
+	data = ((( 0.416134 0.399597 0.00219652 0.182073 )	%  meantemp24=interval(1.3,6.54)  dayssincerain=0 - 3
+		 ( 0.00232813 0.629148 0.365861 0.00266337 )	%  meantemp24=interval(1.3,6.54)  dayssincerain=07-Mar
+		 ( 0.988333 0.00387891 0.00392453 0.0038638 )	%  meantemp24=interval(1.3,6.54)  dayssincerain=14-Jul
+		 ( 0.230377 0.253602 0.283191 0.232831 ))	%  meantemp24=interval(1.3,6.54)  dayssincerain=14 - 18
+		(( 0.559998 0.169889 0.158351 0.111762 )	%  meantemp24=interval(6.54,11.78)  dayssincerain=0 - 3
+		 ( 0.403284 0.0395877 0.346089 0.21104 )	%  meantemp24=interval(6.54,11.78)  dayssincerain=07-Mar
+		 ( 0.317159 0.336963 0.344188 0.00169016 )	%  meantemp24=interval(6.54,11.78)  dayssincerain=14-Jul
+		 ( 0.155673 0.239854 0.434699 0.169774 ))	%  meantemp24=interval(6.54,11.78)  dayssincerain=14 - 18
+		(( 0.264541 0.238782 0.268233 0.228444 )	%  meantemp24=interval(11.78,22.26)  dayssincerain=0 - 3
+		 ( 0.0785877 0.304073 0.285008 0.332331 )	%  meantemp24=interval(11.78,22.26)  dayssincerain=07-Mar
+		 ( 0.29065 0.181345 0.190218 0.337787 )	%  meantemp24=interval(11.78,22.26)  dayssincerain=14-Jul
+		 ( 0.417677 0.429521 0.150567 0.0022355 ))	%  meantemp24=interval(11.78,22.26)  dayssincerain=14 - 18
+		(( 0.000193946 0.190368 0.277115 0.532323 )	%  meantemp24=interval(22.26,27.5)  dayssincerain=0 - 3
+		 ( 0.115506 0.495831 0.00335021 0.385313 )	%  meantemp24=interval(22.26,27.5)  dayssincerain=07-Mar
+		 ( 0.00378132 0.349774 0.641395 0.00505021 )	%  meantemp24=interval(22.26,27.5)  dayssincerain=14-Jul
+		 ( 0.187184 0.226424 0.405148 0.181244 )));	%  meantemp24=interval(22.26,27.5)  dayssincerain=14 - 18
+	experience
+	     = (( 28.794	%  meantemp24=interval(1.3,6.54)  dayssincerain=0 - 3
+		  9.0707	%  meantemp24=interval(1.3,6.54)  dayssincerain=07-Mar
+		  4.54328	%  meantemp24=interval(1.3,6.54)  dayssincerain=14-Jul
+		  0.114372 )	%  meantemp24=interval(1.3,6.54)  dayssincerain=14 - 18
+		( 203.099	%  meantemp24=interval(6.54,11.78)  dayssincerain=0 - 3
+		  42.0267	%  meantemp24=interval(6.54,11.78)  dayssincerain=07-Mar
+		  12.402	%  meantemp24=interval(6.54,11.78)  dayssincerain=14-Jul
+		  0.385794 )	%  meantemp24=interval(6.54,11.78)  dayssincerain=14 - 18
+		( 1322.24	%  meantemp24=interval(11.78,22.26)  dayssincerain=0 - 3
+		  355.233	%  meantemp24=interval(11.78,22.26)  dayssincerain=07-Mar
+		  64.5498	%  meantemp24=interval(11.78,22.26)  dayssincerain=14-Jul
+		  9.1555 )	%  meantemp24=interval(11.78,22.26)  dayssincerain=14 - 18
+		( 139.736	%  meantemp24=interval(22.26,27.5)  dayssincerain=0 - 3
+		  27.2472	%  meantemp24=interval(22.26,27.5)  dayssincerain=07-Mar
+		  6.12576	%  meantemp24=interval(22.26,27.5)  dayssincerain=14-Jul
+		  0.278077 ));	%  meantemp24=interval(22.26,27.5)  dayssincerain=14 - 18
+    }
+
+    potential (geomean200 | meantemp24 prevgeomean rain48)
+    {
+	data = (((( 0.949948 0.0500525 )	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(0,50)  rain48=interval(0,2.5)
+		  ( 0.992504 0.0074959 )	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(0,50)  rain48=interval(2.5,7.6)
+		  ( 0.991775 0.00822531 ))	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(0,50)  rain48=interval(7.6,93)
+		 (( 0.995449 0.00455103 )	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(50,100)  rain48=interval(0,2.5)
+		  ( 0.995985 0.00401502 )	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(50,100)  rain48=interval(2.5,7.6)
+		  ( 0.892654 0.107346 ))	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(50,100)  rain48=interval(7.6,93)
+		 (( 0.967665 0.0323349 )	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(100,200)  rain48=interval(0,2.5)
+		  ( 0.764334 0.235666 )	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(100,200)  rain48=interval(2.5,7.6)
+		  ( 0.99166 0.00833961 ))	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(100,200)  rain48=interval(7.6,93)
+		 (( 0.988252 0.0117475 )	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(200,1000)  rain48=interval(0,2.5)
+		  ( 0.316388 0.683612 )	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(200,1000)  rain48=interval(2.5,7.6)
+		  ( 0.281699 0.718301 ))	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(200,1000)  rain48=interval(7.6,93)
+		 (( 0.671381 0.328619 )	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(1000,7400)  rain48=interval(0,2.5)
+		  ( 0.513057 0.486943 )	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(1000,7400)  rain48=interval(2.5,7.6)
+		  ( 0.499425 0.500575 )))	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(1000,7400)  rain48=interval(7.6,93)
+		((( 0.999876 0.000124335 )	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(0,50)  rain48=interval(0,2.5)
+		  ( 0.998326 0.00167367 )	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(0,50)  rain48=interval(2.5,7.6)
+		  ( 0.972029 0.0279708 ))	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(0,50)  rain48=interval(7.6,93)
+		 (( 0.999505 0.000495372 )	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(50,100)  rain48=interval(0,2.5)
+		  ( 0.90488 0.0951198 )	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(50,100)  rain48=interval(2.5,7.6)
+		  ( 0.999409 0.00059065 ))	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(50,100)  rain48=interval(7.6,93)
+		 (( 0.998345 0.00165547 )	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(100,200)  rain48=interval(0,2.5)
+		  ( 0.990347 0.00965343 )	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(100,200)  rain48=interval(2.5,7.6)
+		  ( 0.994455 0.00554515 ))	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(100,200)  rain48=interval(7.6,93)
+		 (( 0.999161 0.000838644 )	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(200,1000)  rain48=interval(0,2.5)
+		  ( 0.989441 0.0105587 )	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(200,1000)  rain48=interval(2.5,7.6)
+		  ( 0.984152 0.0158481 ))	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(200,1000)  rain48=interval(7.6,93)
+		 (( 0.996306 0.00369439 )	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(1000,7400)  rain48=interval(0,2.5)
+		  ( 0.991815 0.00818547 )	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(1000,7400)  rain48=interval(2.5,7.6)
+		  ( 0.442077 0.557923 )))	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(1000,7400)  rain48=interval(7.6,93)
+		((( 0.939006 0.0609937 )	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(0,50)  rain48=interval(0,2.5)
+		  ( 0.934517 0.0654827 )	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(0,50)  rain48=interval(2.5,7.6)
+		  ( 0.901194 0.0988063 ))	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(0,50)  rain48=interval(7.6,93)
+		 (( 0.869221 0.130779 )	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(50,100)  rain48=interval(0,2.5)
+		  ( 0.898123 0.101877 )	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(50,100)  rain48=interval(2.5,7.6)
+		  ( 0.827867 0.172133 ))	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(50,100)  rain48=interval(7.6,93)
+		 (( 0.875243 0.124757 )	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(100,200)  rain48=interval(0,2.5)
+		  ( 0.667606 0.332394 )	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(100,200)  rain48=interval(2.5,7.6)
+		  ( 0.700543 0.299457 ))	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(100,200)  rain48=interval(7.6,93)
+		 (( 0.80857 0.19143 )	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(200,1000)  rain48=interval(0,2.5)
+		  ( 0.470683 0.529317 )	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(200,1000)  rain48=interval(2.5,7.6)
+		  ( 0.63176 0.36824 ))	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(200,1000)  rain48=interval(7.6,93)
+		 (( 0.649664 0.350336 )	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(1000,7400)  rain48=interval(0,2.5)
+		  ( 0.00166686 0.998333 )	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(1000,7400)  rain48=interval(2.5,7.6)
+		  ( 0.49909 0.50091 )))	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(1000,7400)  rain48=interval(7.6,93)
+		((( 0.889727 0.110273 )	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(0,50)  rain48=interval(0,2.5)
+		  ( 0.848369 0.151631 )	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(0,50)  rain48=interval(2.5,7.6)
+		  ( 0.915704 0.0842964 ))	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(0,50)  rain48=interval(7.6,93)
+		 (( 0.912587 0.0874133 )	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(50,100)  rain48=interval(0,2.5)
+		  ( 0.501991 0.498009 )	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(50,100)  rain48=interval(2.5,7.6)
+		  ( 0.997295 0.00270465 ))	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(50,100)  rain48=interval(7.6,93)
+		 (( 0.623136 0.376864 )	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(100,200)  rain48=interval(0,2.5)
+		  ( 0.336493 0.663507 )	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(100,200)  rain48=interval(2.5,7.6)
+		  ( 0.994186 0.00581396 ))	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(100,200)  rain48=interval(7.6,93)
+		 (( 0.841817 0.158183 )	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(200,1000)  rain48=interval(0,2.5)
+		  ( 0.988139 0.0118612 )	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(200,1000)  rain48=interval(2.5,7.6)
+		  ( 0.994743 0.00525718 ))	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(200,1000)  rain48=interval(7.6,93)
+		 (( 0.00700153 0.992998 )	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(1000,7400)  rain48=interval(0,2.5)
+		  ( 0.484882 0.515118 )	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(1000,7400)  rain48=interval(2.5,7.6)
+		  ( 0.344014 0.655986 ))));	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(1000,7400)  rain48=interval(7.6,93)
+	experience
+	     = ((( 24.7925	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(0,50)  rain48=interval(0,2.5)
+		   4.96225	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(0,50)  rain48=interval(2.5,7.6)
+		   1.80501 )	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(0,50)  rain48=interval(7.6,93)
+		 ( 3.30188	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(50,100)  rain48=interval(0,2.5)
+		   2.48105	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(50,100)  rain48=interval(2.5,7.6)
+		   0.203018 )	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(50,100)  rain48=interval(7.6,93)
+		 ( 1.36251	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(100,200)  rain48=interval(0,2.5)
+		   0.269473	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(100,200)  rain48=interval(2.5,7.6)
+		   1.12271 )	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(100,200)  rain48=interval(7.6,93)
+		 ( 1.56003	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(200,1000)  rain48=interval(0,2.5)
+		   0.26497	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(200,1000)  rain48=interval(2.5,7.6)
+		   0.123217 )	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(200,1000)  rain48=interval(7.6,93)
+		 ( 0.203639	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(1000,7400)  rain48=interval(0,2.5)
+		   0.0427726	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(1000,7400)  rain48=interval(2.5,7.6)
+		   0.0273178 ))	%  meantemp24=interval(1.3,6.54)  prevgeomean=interval(1000,7400)  rain48=interval(7.6,93)
+		(( 106	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(0,50)  rain48=interval(0,2.5)
+		   17.6111	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(0,50)  rain48=interval(2.5,7.6)
+		   49.0404 )	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(0,50)  rain48=interval(7.6,93)
+		 ( 23.7699	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(50,100)  rain48=interval(0,2.5)
+		   1.03681	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(50,100)  rain48=interval(2.5,7.6)
+		   16.9736 )	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(50,100)  rain48=interval(7.6,93)
+		 ( 14.5713	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(100,200)  rain48=interval(0,2.5)
+		   1.59738	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(100,200)  rain48=interval(2.5,7.6)
+		   4.24959 )	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(100,200)  rain48=interval(7.6,93)
+		 ( 13.7969	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(200,1000)  rain48=interval(0,2.5)
+		   1.55551	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(200,1000)  rain48=interval(2.5,7.6)
+		   3.63771 )	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(200,1000)  rain48=interval(7.6,93)
+		 ( 2.76757	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(1000,7400)  rain48=interval(0,2.5)
+		   1.08187	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(1000,7400)  rain48=interval(2.5,7.6)
+		   0.223942 ))	%  meantemp24=interval(6.54,11.78)  prevgeomean=interval(1000,7400)  rain48=interval(7.6,93)
+		(( 759.967	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(0,50)  rain48=interval(0,2.5)
+		   177.766	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(0,50)  rain48=interval(2.5,7.6)
+		   250.134 )	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(0,50)  rain48=interval(7.6,93)
+		 ( 148.061	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(50,100)  rain48=interval(0,2.5)
+		   31.8286	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(50,100)  rain48=interval(2.5,7.6)
+		   50.8204 )	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(50,100)  rain48=interval(7.6,93)
+		 ( 89.7808	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(100,200)  rain48=interval(0,2.5)
+		   22.4873	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(100,200)  rain48=interval(2.5,7.6)
+		   28.0895 )	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(100,200)  rain48=interval(7.6,93)
+		 ( 98.671	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(200,1000)  rain48=interval(0,2.5)
+		   34.6526	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(200,1000)  rain48=interval(2.5,7.6)
+		   28.203 )	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(200,1000)  rain48=interval(7.6,93)
+		 ( 13.7615	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(1000,7400)  rain48=interval(0,2.5)
+		   5.79822	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(1000,7400)  rain48=interval(2.5,7.6)
+		   11.1556 ))	%  meantemp24=interval(11.78,22.26)  prevgeomean=interval(1000,7400)  rain48=interval(7.6,93)
+		(( 77.953	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(0,50)  rain48=interval(0,2.5)
+		   9.92479	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(0,50)  rain48=interval(2.5,7.6)
+		   29.7226 )	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(0,50)  rain48=interval(7.6,93)
+		 ( 16.786	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(50,100)  rain48=interval(0,2.5)
+		   2.81082	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(50,100)  rain48=interval(2.5,7.6)
+		   4.85844 )	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(50,100)  rain48=interval(7.6,93)
+		 ( 10.089	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(100,200)  rain48=interval(0,2.5)
+		   3.46595	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(100,200)  rain48=interval(2.5,7.6)
+		   2.53415 )	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(100,200)  rain48=interval(7.6,93)
+		 ( 9.04622	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(200,1000)  rain48=interval(0,2.5)
+		   1.45009	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(200,1000)  rain48=interval(2.5,7.6)
+		   2.86255 )	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(200,1000)  rain48=interval(7.6,93)
+		 ( 1.6904	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(1000,7400)  rain48=interval(0,2.5)
+		   0.0639622	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(1000,7400)  rain48=interval(2.5,7.6)
+		   0.129443 )));	%  meantemp24=interval(22.26,27.5)  prevgeomean=interval(1000,7400)  rain48=interval(7.6,93)
+    }
+
+    potential (prevgeomean)
+    {
+	data = ( 0.678507 0.136149 0.0807279 0.0880106 0.0166051 );
+	experience = 2225;
+    }
+
+    potential (meantemp24)
+    {
+	data = ( 0.0191112 0.115916 0.787046 0.0779269 );
+	experience = 2225;
+    }
+} % class ManitobaMerged_Condensed_Discretized_with_NO_ID_20240228
