@@ -22,3 +22,9 @@ From there, a probability is returned which informs the end user on E. Coli leve
 - utilizes namespacing to reduce redundant code
 - utilizes `rhino` for file structuring
 - Reproducible examples are key in my development workflow. These are included under /reprex. These might need to be pulled out of the `rhino` file system to run correctly.
+
+### To Run App:
+
+- Ensure dependencies/lockfile snapshot are loaded
+- if styling isn't showing up, rebuild with `rhino::build_sass`
+- run with `shiny::runApp()`
